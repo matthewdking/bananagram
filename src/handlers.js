@@ -1,21 +1,30 @@
 const path = require('path');
 const fs = require('fs');
-const findMatches = require('./logic')
+//const findWords = require('./logic')
 
-const handleHome = (response) => {
+var headers = {
+  'content-type' : 'text/html'
+}
+
+const handleHome = (req, res) => {
   const filePath = path.join(__dirname, "..", "public", "index.html");
   fs.readFile(filePath, (err, file) => {
     if (err) {
-      response.writeHead(500, "Content-Type:text/html");
-      response.end("<h1>We fucked up</h1>");
+      res.writeHead(500, headers);
+      res.end("<h1>We fucked up</h1>");
     } else {
-      response.writeHead(200, "Content-Type:text/html");
-      response.end(file);
+      res.writeHead(200, headers);
+      res.end(file);
     }
   });
 }
 
+const notFound = (req, res) => {
+  res.writeHead(404, headers);
+  res.end('We can\'t find what you\'re looking for');
+}
 
 module.exports = {
-  handleHome
+  handleHome,
+  notFound
 }
