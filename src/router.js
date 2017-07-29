@@ -1,13 +1,14 @@
 const handlers = require('./handlers');
 
-const router = (request, response) => {
-  const url = request.url;
-  if (url === '/') {
-    handlers.handleHome(response);
-  } else {
-    response.writeHead(404, "Content-Type:text/html");
-    response.end("<h1>We fucked up</h1>");
-  }
+var routes = {
+  '/' : handlers.handleHome,
+  '404' : handlers.notFound
 }
 
-module.exports = router;
+module.exports = function(req, res) {
+  if (routes[req.url]) {
+    routes[req.url](req, res);
+  } else {
+    routes[404](req, res);
+  }
+}
