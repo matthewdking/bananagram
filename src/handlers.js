@@ -10,11 +10,11 @@ const handleHome = (req, res) => {
   const filePath = path.join(__dirname, "..", "public", "index.html");
   fs.readFile(filePath, (err, file) => {
     if (err) {
-      response.writeHead(500, handlers);
-      response.end("<h1>We fucked up</h1>");
+      res.writeHead(500, headers);
+      res.end("<h1>We fucked up</h1>");
     } else {
-      response.writeHead(200, handlers);
-      response.end(file);
+      res.writeHead(200, headers);
+      res.end(file);
     }
   });
 }
