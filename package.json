@@ -1,0 +1,24 @@
+{
+  "name": "bananagram",
+  "version": "1.0.0",
+  "description": "app to calculate the best words to be used in the popular word game bananagrams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewdking/bananagram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewdking/bananagram/issues"
+  },
+  "homepage": "https://github.com/matthewdking/bananagram#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.7.0"
+  }
+}
