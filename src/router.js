@@ -1,14 +1,17 @@
-const handlers = require('./handlers');
+const { handleHome, handlePublic, notFound } = require('./handlers');
 
-var routes = {
-  '/' : handlers.handleHome,
-  '404' : handlers.notFound
-}
-
-module.exports = function(req, res) {
-  if (routes[req.url]) {
-    routes[req.url](req, res);
-  } else {
-    routes[404](req, res);
+const router = (req, res) => {
+  const url = req.url;
+  console.log(url);
+  if (url === '/'){
+    handleHome(res);
+  }
+  else if (url.indexOf('/public') !== -1) {
+    handlePublic(res, url);
+  }
+  else {
+    notFound(req, res)
   }
 }
+
+module.exports = router;
